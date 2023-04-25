@@ -37,7 +37,7 @@ namespace KaficiProjekat.Implementation.Emails
             message.Body = dto.Body;
             message.IsBodyHtml = true;
 
-            smtp.Send(message);
+            //smtp.Send(message);
         }
     }
 }

@@ -73,8 +73,16 @@ namespace KaficiProjekat.API
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "KaficiProjekat.API v1"));
-                
+
             }
+
+            app.UseCors(x =>
+            {
+                x.AllowAnyOrigin();
+                x.AllowAnyMethod();
+                x.AllowAnyHeader();
+            });
+
 
             app.UseRouting();
             app.UseMiddleware<GlobalExceptionHandler>();

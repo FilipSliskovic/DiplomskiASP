@@ -50,6 +50,7 @@ namespace KaficiProjekat.API.Controllers
         /// <response code="404">Not found.</response>
         /// <response code="401">Unauthorized.</response>
         /// <response code="500">Unexpected server error.</response>
+        
 
 
         [HttpGet("{id}")]
