@@ -1,6 +1,8 @@
-﻿using KaficiProjekat.Domain;
+﻿using KaficiProjekat.DataAccess.Migrations;
+using KaficiProjekat.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace KaficiProjekat.DataAccess
 {
@@ -23,7 +25,7 @@ namespace KaficiProjekat.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-BOHUG24;Initial Catalog=KaficiProjekat;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=tcp:fskaficprojekat-server.database.windows.net,1433;Initial Catalog=KaficiProjekat;User Id=fskaficprojekat-server-admin@fskaficprojekat-server;Password=8R40N2F2V612Q837$");
         }
 
 

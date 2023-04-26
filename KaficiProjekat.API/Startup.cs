@@ -46,6 +46,7 @@ namespace KaficiProjekat.API
             services.AddKaficiDbContext(settings.ConnString);
             services.AddUseCases();
             services.AddTransient<IExeptionLogger, ConsoleExceptionLogger>();
+            //services.AddTransient<IUseCaseLogger>(x => new SPUseCaseLogger(settings.ConnString));
             services.AddTransient<IUseCaseLogger>(x => new SPUseCaseLogger(settings.ConnString));
             services.AddTransient<IEmailSender>(x => new SmtpEmailSender(settings.EmailFrom, settings.EmailPassword));
             
