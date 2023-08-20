@@ -11,5 +11,7 @@ namespace KaficiProjekat.API.Core
 
         public IEnumerable<int> UseCaseIds { get; set; } = new List<int>();
         public string Username { get; set; }
+
+        public bool IsSuperUser { get; set; } 
     }
 }

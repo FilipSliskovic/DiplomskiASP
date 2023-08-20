@@ -48,9 +48,9 @@ namespace KaficiProjekat.API.Controllers
 
         // GET api/<ProductsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id, [FromServices] IGetSingleProductQuery query)
         {
-            return "value";
+            return Ok(_handler.HandleQuery(query,id));
         }
 
         // POST api/<ProductsController>

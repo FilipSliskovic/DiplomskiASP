@@ -49,7 +49,8 @@ namespace KaficiProjekat.API.Core
                 Id = user.Id,
                 UseCaseIds = user.UseCases.Select(x => x.UseCaseId).ToList(),
                 Identity = user.UserName,
-                Username = user.UserName
+                Username = user.UserName,
+                IsSuperUser = user.IsSuperUser
             };
 
             var claims = new List<Claim> // Jti : "",
@@ -59,7 +60,10 @@ namespace KaficiProjekat.API.Core
                 new Claim(JwtRegisteredClaimNames.Iat, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64, _settings.Issuer),
                 new Claim("UserId", actor.Id.ToString(), ClaimValueTypes.String, _settings.Issuer),
                 new Claim("UseCases", JsonConvert.SerializeObject(actor.UseCaseIds)),
+                new Claim("IsSuperUser", user.IsSuperUser.ToString()),
                 new Claim("Username", user.UserName),
+                
+                
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.SecretKey));

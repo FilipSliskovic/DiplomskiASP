@@ -14,7 +14,7 @@ using System.Linq;
 
 namespace KaficiProjekat.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("/[controller]")]
     [ApiController]
     [Authorize]
     public class CategoriesController : ControllerBase

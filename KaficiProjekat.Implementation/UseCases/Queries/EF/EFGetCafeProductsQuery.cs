@@ -50,7 +50,7 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
 
             response.Data = query.Skip(toSkip).Take(search.PerPage.Value).Select(x => new CafeProductDTO
             {
-                Id = x.Id,
+                Id = x.Product.Id,
                 CafeName = x.Cafe.Name,
                 ProductName = x.Product.Name,
                 Category = x.Product.Category.Name,
