@@ -34,7 +34,7 @@ namespace KaficiProjekat.API.Controllers
         /// <response code="500">Unexpected server error.</response>
 
         [HttpGet]
-        public IActionResult Get([FromQuery] BasePagedSearch search, [FromServices] IGetWorkersQuery query)
+        public IActionResult Get([FromQuery] WorkersCafeSearch search, [FromServices] IGetWorkersQuery query)
         {
             return Ok(_handler.HandleQuery(query,search));
         }

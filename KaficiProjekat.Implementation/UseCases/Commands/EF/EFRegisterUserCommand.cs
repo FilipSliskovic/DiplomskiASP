@@ -31,7 +31,7 @@ namespace KaficiProjekat.Implementation.UseCases.Commands.EF
             _validator.ValidateAndThrow(request);
 
             var hash = BCrypt.Net.BCrypt.HashPassword(request.Password);
-
+            List<UserUseCase> RegisteredUserUseCases = new List<UserUseCase>();
             var user = new User
             {
                 UserName = request.UserName,
@@ -42,16 +42,36 @@ namespace KaficiProjekat.Implementation.UseCases.Commands.EF
             };
 
             Context.Users.Add(user);
+            user.UseCases = GetRegisteredUserUseCases(user.Id);
+            Context.UserUseCase.AddRange(user.UseCases);
             Context.SaveChanges();
 
             //slanje email-a za verifikaciju ne radi zbog security
 
-            _sender.Send(new EmailDTO
+            //_sender.Send(new EmailDTO
+            //{
+            //    To = request.UserName,
+            //    Title = "Successfull registration!",
+            //    Body = "Dear " + request.Name + "\n Please activate your account...."
+            //});
+        }
+
+        public List<UserUseCase> GetRegisteredUserUseCases(int id)
+        {
+            List<UserUseCase> RegisteredUserUseCases = new List<UserUseCase>();
+            int[] UseCases = { 31, 12, 25, 28 , 38 , 40 , 15  };
+
+            foreach (int i in UseCases)
             {
-                To = request.UserName,
-                Title = "Successfull registration!",
-                Body = "Dear " + request.Name + "\n Please activate your account...."
-            });
+                RegisteredUserUseCases.Add(new UserUseCase
+                {
+                    UserId = id,
+                    UseCaseId = i
+                });
+            }
+
+            
+            return RegisteredUserUseCases;
         }
 
 

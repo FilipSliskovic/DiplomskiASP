@@ -23,11 +23,17 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
 
         public string Description => "Get workers in cafe with EF";
 
-        public PagedResponse<WorkersDTO> Execute(BasePagedSearch search)
+        public PagedResponse<WorkersDTO> Execute(WorkersCafeSearch search)
         {
 
 
             var query = Context.WorkersInCafe.Where(x => x.IsActive == true).Include(x=>x.UserShift).ThenInclude(x=>x.User).Where(x => x.IsActive == true).Include(x=>x.UserShift).ThenInclude(x=>x.Shifts).Where(x => x.IsActive == true).Include(x=>x.Cafe).AsQueryable();
+
+            if (!string.IsNullOrEmpty(search.WorkerName))
+            {
+
+                query = query.Where(x => (x.UserShift.User.Name + x.UserShift.User.LastName).Trim().Contains(search.WorkerName));
+            }
 
             if (!string.IsNullOrEmpty(search.Keyword))
             {
@@ -57,7 +63,6 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
                 WorkerName = x.UserShift.User.Name,
                 WorkerLastName = x.UserShift.User.LastName,
                 CafeName = x.Cafe.Name,
-                IsActive = x.IsActive
             }).ToList();
 
             response.CurrentPage = search.Page.Value;

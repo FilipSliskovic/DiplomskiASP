@@ -2,6 +2,7 @@
 using KaficiProjekat.Application.UseCases.DTO.Searches;
 using KaficiProjekat.Application.UseCases.Queries;
 using KaficiProjekat.DataAccess;
+using KaficiProjekat.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
 {
     public class EFGetOrdersQuery : EfUseCase, IGetOrdersQuery
     {
+        private IAplicationUser _konobar;
         public EFGetOrdersQuery(KaficiProjekatDbContext context) : base(context)
         {
         }
@@ -50,8 +52,10 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
 
             response.Data = query.Skip(toSkip).Take(search.PerPage.Value).Select(x => new OrdersDTO
             {
+                OrderId = x.Id,
+                CafeName = x.Table.Cafe.Name,
+                //Konobar = _konobar.Identity,
                 DateAndTime = x.DateAndTime,
-                IsActive = x.IsActive,
                 TableName = x.Table.Name
                 
             }).ToList();

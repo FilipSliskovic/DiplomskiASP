@@ -57,7 +57,6 @@ namespace KaficiProjekat.Implementation.UseCases.Commands.EF
                     Id = x.Id,
                     Name = x.Name,
                     CafeName = cafe.Name,
-                    IsActive = x.IsActive
                 }),
                 Workers = workers.Select(x => new WorkersDTO
                 {
@@ -67,7 +66,6 @@ namespace KaficiProjekat.Implementation.UseCases.Commands.EF
                     WorkerLastName = x.User.LastName,
                     ShiftName = x.Shifts.Name,
                     Date = cafe.WorkersInCafe.Select(x=>x.Date).First(),
-                    IsActive = x.IsActive
                 })
                 
             };

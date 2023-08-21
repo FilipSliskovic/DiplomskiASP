@@ -5,6 +5,7 @@ using KaficiProjekat.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,11 +36,11 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
 
             var order = new SingleOrderDTO
             {
+                OrderId = search,
                 CafeName = orderProducts.Select(x => x.CafeProduct.Cafe.Name).First(),
                 CafeAdress = orderProducts.Select(x => x.CafeProduct.Cafe.Adress).First(),
                 DateAndTime = DateTime.UtcNow,
                 Konobar = _konobar.Identity,
-                OrderId = search,
                 TableName = orderProducts.Select(x => x.Order.Table.Name).First(),
                 CafeProductOrders = orderProducts.Select(y => new ProizvodiDTO
                 {

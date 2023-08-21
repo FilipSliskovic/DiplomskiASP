@@ -12,7 +12,6 @@ namespace KaficiProjekat.Application.UseCases.DTO
         public string WorkerLastName { get; set; }
         public string ShiftName { get; set; }
         public DateTime Date { get; set; }
-        public bool IsActive { get; set; }
         public string CafeName { get; set; }
 
     }

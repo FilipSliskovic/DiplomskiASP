@@ -39,6 +39,7 @@ namespace KaficiProjekat.API.Controllers
 
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Get([FromQuery] BasePagedSearch search, [FromServices] IGetCafeQuery query)
         {
             return Ok(_handler.HandleQuery(query,search));
@@ -56,6 +57,7 @@ namespace KaficiProjekat.API.Controllers
         /// <response code="500">Unexpected server error.</response>
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public IActionResult Get(int id, [FromServices] IGetSingleCafeQuery query)
         {
             return Ok(_handler.HandleQuery(query,id));

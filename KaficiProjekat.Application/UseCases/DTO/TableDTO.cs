@@ -10,7 +10,6 @@ namespace KaficiProjekat.Application.UseCases.DTO
     {
         public string Name { get; set; }
         public string CafeName { get; set; }
-        public bool IsActive { get; set; }
 
     }
 

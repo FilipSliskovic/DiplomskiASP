@@ -48,6 +48,7 @@ namespace KaficiProjekat.API.Controllers
 
         // GET api/<ProductsController>/5
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public IActionResult Get(int id, [FromServices] IGetSingleProductQuery query)
         {
             return Ok(_handler.HandleQuery(query,id));
