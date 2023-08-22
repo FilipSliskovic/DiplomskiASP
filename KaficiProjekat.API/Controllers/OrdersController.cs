@@ -36,7 +36,7 @@ namespace KaficiProjekat.API.Controllers
 
 
         [HttpGet]
-        public IActionResult Get([FromQuery] BasePagedSearch search, [FromServices] IGetOrdersQuery query)
+        public IActionResult Get([FromQuery] WorkerOrderSearch search, [FromServices] IGetOrdersQuery query)
         {
             return Ok(_handler.HandleQuery(query,search));
         }

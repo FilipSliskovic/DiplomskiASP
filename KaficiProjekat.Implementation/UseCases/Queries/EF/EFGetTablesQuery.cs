@@ -30,7 +30,7 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
 
             if (!string.IsNullOrEmpty(search.Keyword))
             {
-                query = query.Where(x => x.Name.Contains(search.Keyword));
+                query = query.Where(x => x.Name.Contains(search.Keyword) || x.Cafe.Name.Contains(search.Keyword));
             }
 
             if (search.PerPage == null || search.PerPage < 1)

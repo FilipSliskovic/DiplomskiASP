@@ -14,7 +14,7 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
 {
     public class EFGetOrdersQuery : EfUseCase, IGetOrdersQuery
     {
-        private IAplicationUser _konobar;
+        
         public EFGetOrdersQuery(KaficiProjekatDbContext context) : base(context)
         {
         }
@@ -25,10 +25,23 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
 
         public string Description => "Get orders with EF";
 
-        public PagedResponse<OrdersDTO> Execute(BasePagedSearch search)
+        public PagedResponse<OrdersDTO> Execute(WorkerOrderSearch search)
         {
 
-            var query = Context.Orders.Where(x => x.IsActive == true).Include(x => x.Table).AsQueryable();
+            var query = Context.Orders
+                .Where(x => x.IsActive == true)
+                .Include(x => x.Table)
+                .ThenInclude(x=>x.Cafe)
+                .ThenInclude(x=>x.WorkersInCafe)
+                .ThenInclude(x=>x.UserShift)
+                .ThenInclude(x=>x.User).Where(x => x.IsActive == true)
+                .AsQueryable();
+
+            if(search.WorkerId>0)
+            {
+                query = query.Where(order => order.Table.Cafe.WorkersInCafe
+                .Any(worker => worker.UserShift.User.Id == search.WorkerId));
+            }
 
             if (!string.IsNullOrEmpty(search.Keyword))
             {
@@ -54,7 +67,7 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
             {
                 OrderId = x.Id,
                 CafeName = x.Table.Cafe.Name,
-                //Konobar = _konobar.Identity,
+                Konobar = x.Table.Cafe.WorkersInCafe.Select(x=>x.UserShift.User.Name+x.UserShift.User.LastName).FirstOrDefault(),
                 DateAndTime = x.DateAndTime,
                 TableName = x.Table.Name
                 

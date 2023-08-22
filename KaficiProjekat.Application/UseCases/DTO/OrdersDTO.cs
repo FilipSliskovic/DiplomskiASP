@@ -9,7 +9,7 @@ namespace KaficiProjekat.Application.UseCases.DTO
     public class OrdersDTO 
     {
         public int OrderId { get; set; }
-        
+        public string Konobar { get; set; }
         public string CafeName { get; set; }    
         public string TableName { get; set; }
         public DateTime DateAndTime { get; set; }
@@ -38,7 +38,7 @@ namespace KaficiProjekat.Application.UseCases.DTO
     public class SingleOrderDTO : OrdersDTO
     {
         public string CafeAdress { get; set; }
-        public string Konobar { get; set; }
+        
         public decimal TotalOrderPrice { get; set; }
         public IEnumerable<ProizvodiDTO> CafeProductOrders { get; set; }
         
