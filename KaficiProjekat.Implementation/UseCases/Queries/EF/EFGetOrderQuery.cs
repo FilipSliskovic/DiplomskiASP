@@ -32,28 +32,48 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
             var orderProducts = Context.CafeProductOrder.Where(x => x.OrderId == search && x.IsActive == true);
 
 
-
-
-            var order = new SingleOrderDTO
+            if (!orderProducts.Any())
             {
-                OrderId = search,
-                CafeName = orderProducts.Select(x => x.CafeProduct.Cafe.Name).First(),
-                CafeAdress = orderProducts.Select(x => x.CafeProduct.Cafe.Adress).First(),
-                DateAndTime = DateTime.UtcNow,
-                Konobar = _konobar.Identity,
-                TableName = orderProducts.Select(x => x.Order.Table.Name).First(),
-                CafeProductOrders = orderProducts.Select(y => new ProizvodiDTO
+                var order = new SingleOrderDTO
                 {
-                    ProductName = y.ProductName,
-                    ProductAmount = y.ProductAmount,
-                    ProductPricePer = y.ProductPrice.Value,
-                    ProductPriceTotal = y.ProductAmount * y.ProductPrice.Value
-                }),
-                TotalOrderPrice = orderProducts.Sum(x => x.ProductPrice.Value * x.ProductAmount)
-            };
+                    OrderId = search,
+                    CafeName = null,
+                    CafeAdress = null,
+                    DateAndTime = DateTime.UtcNow,
+                    Konobar = _konobar.Identity,
+                    TableName = null,
+                    CafeProductOrders = null,
+                    TotalOrderPrice = 0
+                };
+                return order;
+            }
 
+            else
+            {
+                var order = new SingleOrderDTO
+                {
+                    OrderId = search,
+                    CafeName = orderProducts.Select(x => x.CafeProduct.Cafe.Name).First(),
+                    CafeAdress = orderProducts.Select(x => x.CafeProduct.Cafe.Adress).First(),
+                    DateAndTime = DateTime.UtcNow,
+                    Konobar = _konobar.Identity,
+                    TableName = orderProducts.Select(x => x.Order.Table.Name).First(),
+                    CafeProductOrders = orderProducts.Select(y => new ProizvodiDTO
+                    {
+                        ProductName = y.ProductName,
+                        ProductAmount = y.ProductAmount,
+                        ProductPricePer = y.ProductPrice.Value,
+                        ProductPriceTotal = y.ProductAmount * y.ProductPrice.Value
+                    }),
+                    TotalOrderPrice = orderProducts.Sum(x => x.ProductPrice.Value * x.ProductAmount)
+                };
+                return order;
+            }
 
-            return order;
+            
+            
+
+            
         }
     }
 }

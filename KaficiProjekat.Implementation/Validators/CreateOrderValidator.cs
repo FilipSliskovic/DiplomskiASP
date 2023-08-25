@@ -17,7 +17,7 @@ namespace KaficiProjekat.Implementation.Validators
         {
             RuleFor(x => x.DateAndTime)
                 .Cascade(CascadeMode.Stop)
-                .GreaterThan(DateTime.Now);
+                .GreaterThan(DateTime.UtcNow.AddMinutes(-1));
             _context = context;
 
         }

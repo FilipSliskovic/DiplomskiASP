@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KaficiProjekat.Application.UseCases.Queries
 {
-    public interface IGetCafeProductsQuery : IQuery<BasePagedSearch,PagedResponse<CafeProductDTO>>
+    public interface IGetCafeProductsQuery : IQuery<CafeProductsSearch,PagedResponse<CafeProductDTO>>
     {
     }
 }

@@ -8,7 +8,7 @@ namespace KaficiProjekat.Application.UseCases.DTO.Searches
 {
     public class WorkersCafeSearch : BasePagedSearch
     {
-        public string WorkerName { get; set; }
+        public int WorkerId { get; set; }
         public DateTime? DateFrom { get; set; } = DateTime.Today;
         public DateTime? DateTo { get; set; } = DateTime.Today.AddDays(1);
     }

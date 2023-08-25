@@ -29,10 +29,10 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
 
             var query = Context.WorkersInCafe.Where(x => x.IsActive == true).Include(x=>x.UserShift).ThenInclude(x=>x.User).Where(x => x.IsActive == true).Include(x=>x.UserShift).ThenInclude(x=>x.Shifts).Where(x => x.IsActive == true).Include(x=>x.Cafe).AsQueryable();
 
-            if (!string.IsNullOrEmpty(search.WorkerName))
+            if (search.WorkerId > 0)
             {
 
-                query = query.Where(x => (x.UserShift.User.Name + x.UserShift.User.LastName).Trim().Contains(search.WorkerName));
+                query = query.Where(x => x.UserShift.User.Id == search.WorkerId);
             }
 
             if (!string.IsNullOrEmpty(search.Keyword))

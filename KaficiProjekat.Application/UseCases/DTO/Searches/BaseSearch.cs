@@ -15,7 +15,7 @@ namespace KaficiProjekat.Application.UseCases.DTO.Searches
 
     public class PagedSearch
     {
-        public int? PerPage { get; set; } = 15;
+        public int? PerPage { get; set; } = 50;
         public int? Page { get; set; } = 1;
     }
 

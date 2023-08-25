@@ -36,7 +36,7 @@ namespace KaficiProjekat.API.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Get([FromQuery] BasePagedSearch search, [FromServices] IGetCafeProductsQuery query)
+        public IActionResult Get([FromQuery] CafeProductsSearch search, [FromServices] IGetCafeProductsQuery query)
         {
             return Ok(_handler.HandleQuery(query,search));
         }

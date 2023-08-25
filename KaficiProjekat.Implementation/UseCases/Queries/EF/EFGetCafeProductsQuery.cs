@@ -24,9 +24,14 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
 
         public string Description => "get cafe products with ef";
 
-        public PagedResponse<CafeProductDTO> Execute(BasePagedSearch search)
+        public PagedResponse<CafeProductDTO> Execute(CafeProductsSearch search)
         {
             var query = Context.CafeProducts.Where(x=>x.IsActive == true).Include(x=>x.Product).ThenInclude(x=>x.Category).Where(x=>x.IsActive == true).Include(x=>x.Cafe).Where(x=>x.IsActive == true).AsQueryable();
+
+            if (!string.IsNullOrEmpty(search.CafeName)) 
+            {
+                query = query.Where(x => x.Cafe.Name.Contains(search.CafeName));
+            }
 
             if (!string.IsNullOrEmpty(search.Keyword))
             {

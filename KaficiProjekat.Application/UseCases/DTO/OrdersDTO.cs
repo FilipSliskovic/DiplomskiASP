@@ -40,7 +40,7 @@ namespace KaficiProjekat.Application.UseCases.DTO
         public string CafeAdress { get; set; }
         
         public decimal TotalOrderPrice { get; set; }
-        public IEnumerable<ProizvodiDTO> CafeProductOrders { get; set; }
+        public IEnumerable<ProizvodiDTO> CafeProductOrders { get; set; } = null;
         
 
     }
