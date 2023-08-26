@@ -23,7 +23,7 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
 
         public string Description => "Get Cafe Product Orders with EF";
 
-        public PagedResponse<CafeProductOrderDTO> Execute(BasePagedSearch search)
+        public PagedResponse<CafeProductOrderDTO> Execute(CafeProductOrderSearch search)
         {
 
 
@@ -31,6 +31,11 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
                 .Include(x => x.Order).ThenInclude(x => x.Table).Where(x => x.IsActive == true)
                 .Include(x => x.CafeProduct).ThenInclude(x => x.Product).Where(x => x.IsActive == true)
                 .Include(x => x.CafeProduct).ThenInclude(x => x.Cafe).Where(x => x.IsActive == true).AsQueryable();
+
+            if (search.OrderId > 0) 
+            {
+                query = query.Where(x=> x.OrderId == search.OrderId);
+            }
 
             if (!string.IsNullOrEmpty(search.Keyword))
             {
@@ -73,7 +78,8 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
                 AmountOfProducts = x.ProductAmount,
                 TableName = x.Order.Table.Name,
                 TotalProductsPrice = x.ProductPrice.Value * x.ProductAmount,
-                DateAndTime = x.Order.DateAndTime
+                DateAndTime = x.Order.DateAndTime,
+                OrderId = x.Order.Id,
                 
                 
 

@@ -14,7 +14,7 @@ namespace KaficiProjekat.Application.UseCases.DTO
         public DateTime DateAndTime { get; set; }
         public decimal TotalProductsPrice { get; set; }
         public int AmountOfProducts { get; set; }
-
+        public int OrderId { get; set; }
 
     }
 
@@ -35,6 +35,7 @@ namespace KaficiProjekat.Application.UseCases.DTO
 
     public class ProizvodiDTO
     {
+        
         public string ProductName { get; set; }
         public int ProductAmount { get; set; }
         public decimal ProductPricePer { get; set; }

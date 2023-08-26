@@ -35,7 +35,7 @@ namespace KaficiProjekat.API.Controllers
 
 
         [HttpGet]
-        public IActionResult Get([FromQuery] BasePagedSearch search, [FromServices] IGetCafeProductOrdersQuery query)
+        public IActionResult Get([FromQuery] CafeProductOrderSearch search, [FromServices] IGetCafeProductOrdersQuery query)
         {
             return Ok(_handler.HandleQuery(query,search));
         }

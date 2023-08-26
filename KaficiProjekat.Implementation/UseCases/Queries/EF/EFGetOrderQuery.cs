@@ -60,6 +60,7 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
                     TableName = orderProducts.Select(x => x.Order.Table.Name).First(),
                     CafeProductOrders = orderProducts.Select(y => new ProizvodiDTO
                     {
+                        
                         ProductName = y.ProductName,
                         ProductAmount = y.ProductAmount,
                         ProductPricePer = y.ProductPrice.Value,
