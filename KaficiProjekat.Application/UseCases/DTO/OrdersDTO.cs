@@ -19,7 +19,7 @@ namespace KaficiProjekat.Application.UseCases.DTO
     public class CreateOrderDTO
     {
         public int TableId { get; set; }
-        public DateTime DateAndTime { get; set; } = DateTime.Now.AddMinutes(1);
+        public DateTime DateAndTime { get; set; } = DateTime.UtcNow.AddHours(2);
 
     }
 

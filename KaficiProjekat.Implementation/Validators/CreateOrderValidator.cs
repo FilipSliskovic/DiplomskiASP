@@ -15,9 +15,9 @@ namespace KaficiProjekat.Implementation.Validators
 
         public CreateOrderValidator(KaficiProjekatDbContext context)
         {
-            RuleFor(x => x.DateAndTime)
+            RuleFor(x => x.DateAndTime.ToUniversalTime())
                 .Cascade(CascadeMode.Stop)
-                .GreaterThan(DateTime.UtcNow.AddMinutes(-1));
+                .GreaterThan(DateTime.UtcNow.AddHours(2).AddMinutes(-1));
             _context = context;
 
         }
