@@ -69,5 +69,7 @@ namespace KaficiProjekat.DataAccess
         public DbSet<CafeProductOrder> CafeProductOrder { get; set; }
         public DbSet<UserUseCase> UserUseCase { get; set; }
         public DbSet<Activity> Activities { get; set; }
+
+        public DbSet<Reservation> Reservations { get; set; }
     }
 }

@@ -133,6 +133,7 @@ namespace KaficiProjekat.API.Extensions
             services.AddTransient<IGetSingleCafeQuery, EFGetSingleCafeQuery>();
             services.AddTransient<IDeleteOrderCommand, EFDeleteOrderCommand>();
             services.AddTransient<IGetSingleProductQuery, EFGetSingleProductQuery>();
+            services.AddTransient<IGetReservationsQuery, EFGetReservationsQuery>();
             
             
 
