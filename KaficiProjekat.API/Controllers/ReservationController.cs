@@ -1,4 +1,6 @@
-﻿using KaficiProjekat.Application.UseCases.DTO.Searches;
+﻿using KaficiProjekat.Application.UseCases.Commands;
+using KaficiProjekat.Application.UseCases.DTO;
+using KaficiProjekat.Application.UseCases.DTO.Searches;
 using KaficiProjekat.Application.UseCases.Queries;
 using KaficiProjekat.Implementation;
 using Microsoft.AspNetCore.Authorization;
@@ -44,8 +46,10 @@ namespace KaficiProjekat.API.Controllers
 
         // POST api/<ReservationController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] CreateReservationDTO dto, [FromServices] ICreateReservationCommand command)
         {
+            _handler.HandleCommand(command,dto);
+            return StatusCode(201);
         }
 
         // PUT api/<ReservationController>/5

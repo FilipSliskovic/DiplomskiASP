@@ -11,7 +11,16 @@ namespace KaficiProjekat.Application.UseCases.DTO
 
         public string User { get; set; }
         public string Table { get; set; }
+        public string CafeName { get; set; }
+        public string CafeAdress { get; set; }
+
         public DateTime ReservationDateTime { get; set; }
 
+    }
+    public class CreateReservationDTO
+    {
+        public int UserId { get; set; }
+        public int TableId { get; set; }
+        public DateTime ReservationDateTime { get; set; }
     }
 }

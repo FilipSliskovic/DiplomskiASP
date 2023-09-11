@@ -25,7 +25,11 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
 
         public PagedResponse<ReservationDTO> Execute(ReservationSearch search)
         {
-            var query = Context.Reservations.Where(x=>x.IsActive == true).Include(x=>x.User).Where(x=>x.IsActive == true).Include(x=>x.Table).Where(x=>x.IsActive == true);
+            var query = Context.Reservations
+                .Where(x=>x.IsActive == true).Include(x=>x.User)
+                .Where(x=>x.IsActive == true).Include(x=>x.Table)
+                .ThenInclude(x=>x.Cafe)
+                .Where(x=>x.IsActive == true);
 
             if (!string.IsNullOrEmpty(search.Keyword))
             {
@@ -62,6 +66,8 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
                 Id = x.Id,
                 User = x.User.Name + " " + x.User.LastName,
                 Table = x.Table.Name,
+                CafeName = x.Table.Cafe.Name,
+                CafeAdress = x.Table.Cafe.Adress,
                 ReservationDateTime = x.ReservationDateTime,
                 
                 

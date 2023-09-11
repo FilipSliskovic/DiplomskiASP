@@ -134,7 +134,7 @@ namespace KaficiProjekat.API.Extensions
             services.AddTransient<IDeleteOrderCommand, EFDeleteOrderCommand>();
             services.AddTransient<IGetSingleProductQuery, EFGetSingleProductQuery>();
             services.AddTransient<IGetReservationsQuery, EFGetReservationsQuery>();
-            
+            services.AddTransient<ICreateReservationCommand, EFCreateReservationCommand>();
             
 
 
@@ -152,7 +152,7 @@ namespace KaficiProjekat.API.Extensions
             services.AddTransient<CreateCategoyValidator>();
             services.AddTransient<CreateProductValidator>();
             services.AddTransient<CreateTableValidator>();
-
+            services.AddTransient<CreateReservationValidator>();
             #endregion
         }
 

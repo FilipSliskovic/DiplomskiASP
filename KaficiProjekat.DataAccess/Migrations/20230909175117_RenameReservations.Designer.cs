@@ -4,6 +4,7 @@ using KaficiProjekat.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KaficiProjekat.DataAccess.Migrations
 {
     [DbContext(typeof(KaficiProjekatDbContext))]
-    partial class KaficiProjekatDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230909175117_RenameReservations")]
+    partial class RenameReservations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

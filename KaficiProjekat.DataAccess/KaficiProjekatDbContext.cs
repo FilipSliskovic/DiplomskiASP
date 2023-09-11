@@ -25,8 +25,8 @@ namespace KaficiProjekat.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("Data Source=tcp:fskaficprojekat-server.database.windows.net,1433;Initial Catalog=KaficiProjekat;User Id=fskaficprojekat-server-admin@fskaficprojekat-server;Password=8R40N2F2V612Q837$");
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-BOHUG24;Initial Catalog=KaficiProjekatLocal;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=tcp:fskaficprojekat-server.database.windows.net,1433;Initial Catalog=KaficiProjekat;User Id=fskaficprojekat-server-admin@fskaficprojekat-server;Password=8R40N2F2V612Q837$");
+            //optionsBuilder.UseSqlServer("Data Source=DESKTOP-BOHUG24;Initial Catalog=KaficiProjekatLocal;Integrated Security=True");
         }
 
 
@@ -69,7 +69,6 @@ namespace KaficiProjekat.DataAccess
         public DbSet<CafeProductOrder> CafeProductOrder { get; set; }
         public DbSet<UserUseCase> UserUseCase { get; set; }
         public DbSet<Activity> Activities { get; set; }
-
         public DbSet<Reservation> Reservations { get; set; }
     }
 }
