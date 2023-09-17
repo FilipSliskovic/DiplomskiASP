@@ -66,6 +66,7 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
                 Id = x.Id,
                 User = x.User.Name + " " + x.User.LastName,
                 Table = x.Table.Name,
+                TableSeats = x.Table.Seats,
                 CafeName = x.Table.Cafe.Name,
                 CafeAdress = x.Table.Cafe.Adress,
                 ReservationDateTime = x.ReservationDateTime,

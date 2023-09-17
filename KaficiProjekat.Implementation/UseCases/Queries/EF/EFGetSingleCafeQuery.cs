@@ -57,6 +57,7 @@ namespace KaficiProjekat.Implementation.UseCases.Commands.EF
                     Id = x.Id,
                     Name = x.Name,
                     CafeName = cafe.Name,
+                    Seats = x.Seats
                 }),
                 Workers = workers.Select(x => new WorkersDTO
                 {

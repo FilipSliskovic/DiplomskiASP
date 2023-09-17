@@ -53,6 +53,7 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
                 Id = x.Id,
                 Name = x.Name,
                 CafeName = x.Cafe.Name,
+                Seats = x.Seats
             }).ToList();
 
             response.CurrentPage = search.Page.Value;

@@ -13,7 +13,7 @@ namespace KaficiProjekat.Application.UseCases.DTO
         public string Table { get; set; }
         public string CafeName { get; set; }
         public string CafeAdress { get; set; }
-
+        public int TableSeats { get; set; }
         public DateTime ReservationDateTime { get; set; }
 
     }
