@@ -38,6 +38,13 @@ namespace KaficiProjekat.API.Controllers
         }
 
         // GET api/<ReservationController>/5
+
+        /// <summary>
+        /// Get single Reservaiton. Only authorized can search.
+        /// </summary>
+        /// <response code="200">Successful query.</response>
+        /// <response code="401">Unauthorized.</response>
+        /// <response code="500">Unexpected server error.</response>
         [HttpGet("{id}")]
         public string Get(int id)
         {
@@ -45,6 +52,13 @@ namespace KaficiProjekat.API.Controllers
         }
 
         // POST api/<ReservationController>
+
+        /// <summary>
+        /// Create a new reservation.
+        /// </summary>
+        /// <response code="201">Successful command.</response>
+        /// <response code="401">Unauthorized.</response>
+        /// <response code="500">Unexpected server error.</response>
         [HttpPost]
         public IActionResult Post([FromBody] CreateReservationDTO dto, [FromServices] ICreateReservationCommand command)
         {
@@ -53,15 +67,35 @@ namespace KaficiProjekat.API.Controllers
         }
 
         // PUT api/<ReservationController>/5
+
+        /// <summary>
+        /// Update a reservation.
+        /// </summary>
+        /// <response code="200">Successful query.</response>
+        /// <response code="401">Unauthorized.</response>
+        /// <response code="500">Unexpected server error.</response>
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put([FromBody] UpdateReservationDTO dto, [FromServices] IUpdateReservationCommand command)
         {
+            _handler.HandleCommand(command,dto);
+            return Ok();
+
         }
 
         // DELETE api/<ReservationController>/5
+
+        /// <summary>
+        /// Delete a reservation.
+        /// </summary>
+        /// <response code="204">Successful query.</response>
+        /// <response code="401">Unauthorized.</response>
+        /// <response code="500">Unexpected server error.</response>
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id, [FromServices] IDeleteReservationCommand command)
         {
+            _handler.HandleCommand(command,id);
+
+            return NoContent();
         }
     }
 }

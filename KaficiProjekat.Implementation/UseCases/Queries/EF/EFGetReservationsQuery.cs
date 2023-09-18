@@ -29,7 +29,7 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
                 .Where(x=>x.IsActive == true).Include(x=>x.User)
                 .Where(x=>x.IsActive == true).Include(x=>x.Table)
                 .ThenInclude(x=>x.Cafe)
-                .Where(x=>x.IsActive == true);
+                .Where(x=>x.IsActive == true).AsQueryable();
 
             if (!string.IsNullOrEmpty(search.Keyword))
             {

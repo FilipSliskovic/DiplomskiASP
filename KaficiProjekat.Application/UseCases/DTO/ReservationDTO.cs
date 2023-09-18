@@ -23,4 +23,11 @@ namespace KaficiProjekat.Application.UseCases.DTO
         public int TableId { get; set; }
         public DateTime ReservationDateTime { get; set; }
     }
+
+    public class UpdateReservationDTO
+    {
+        public int ID { get; set; }
+        public int TableId { get; set; }
+        public DateTime ReservationDateTime { get; set; }
+    }
 }
