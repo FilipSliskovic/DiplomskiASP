@@ -13,7 +13,7 @@ namespace KaficiProjekat.DataAccess.Configurations
         protected override void ConfigureRules(EntityTypeBuilder<Order> builder)
         {
             builder.HasMany(x=>x.CafeProductOrders).WithOne(x=>x.Order).HasForeignKey(x=>x.OrderId).OnDelete(Microsoft.EntityFrameworkCore.DeleteBehavior.Restrict);
-
+            builder.HasOne(x => x.User).WithMany(x => x.Orders).HasForeignKey(x => x.UserId).OnDelete(Microsoft.EntityFrameworkCore.DeleteBehavior.Restrict);
         }
     }
 }

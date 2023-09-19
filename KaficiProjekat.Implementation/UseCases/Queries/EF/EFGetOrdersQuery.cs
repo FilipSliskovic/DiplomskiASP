@@ -39,8 +39,7 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
 
             if(search.WorkerId>0)
             {
-                query = query.Where(order => order.Table.Cafe.WorkersInCafe
-                .Any(worker => worker.UserShift.User.Id == search.WorkerId));
+                query = query.Where(order => order.UserId == search.WorkerId);
             }
 
             if (!string.IsNullOrEmpty(search.Keyword))
@@ -67,7 +66,7 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
             {
                 OrderId = x.Id,
                 CafeName = x.Table.Cafe.Name,
-                Konobar = x.Table.Cafe.WorkersInCafe.Select(x=>x.UserShift.User.Name+x.UserShift.User.LastName).FirstOrDefault(),
+                Konobar = x.User.Name + " " + x.User.LastName,
                 DateAndTime = x.DateAndTime,
                 TableName = x.Table.Name
                 

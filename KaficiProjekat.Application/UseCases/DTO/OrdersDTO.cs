@@ -20,6 +20,8 @@ namespace KaficiProjekat.Application.UseCases.DTO
     {
         public int TableId { get; set; }
         public DateTime DateAndTime { get; set; } = DateTime.UtcNow.AddHours(2);
+        
+
 
     }
 

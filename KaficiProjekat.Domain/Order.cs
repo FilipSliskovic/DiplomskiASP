@@ -10,9 +10,10 @@ namespace KaficiProjekat.Domain
     {
         public int TableId { get; set; }
         public DateTime DateAndTime { get; set; }
+        public int? UserId { get; set; }
 
 
-
+        public User User { get; set; }
         public Table Table { get; set; }
         public ICollection<CafeProductOrder> CafeProductOrders { get; set; } = new List<CafeProductOrder>();
     }

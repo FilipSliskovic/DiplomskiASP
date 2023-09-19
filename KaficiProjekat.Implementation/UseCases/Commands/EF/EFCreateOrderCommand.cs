@@ -17,10 +17,12 @@ namespace KaficiProjekat.Implementation.UseCases.Commands.EF
     {
 
         private CreateOrderValidator _validator;
+        private IAplicationUser _konobar;
 
-        public EFCreateOrderCommand(KaficiProjekatDbContext context, CreateOrderValidator validator) : base(context)
+        public EFCreateOrderCommand(KaficiProjekatDbContext context, CreateOrderValidator validator, IAplicationUser konobar) : base(context)
         {
             _validator = validator;
+            _konobar = konobar;
         }
 
         public int Id => 20;
@@ -44,7 +46,8 @@ namespace KaficiProjekat.Implementation.UseCases.Commands.EF
             var order = new Order
             {
                 DateAndTime = request.DateAndTime,
-                TableId = request.TableId
+                TableId = request.TableId,
+                UserId = _konobar.Id,
             };
 
             Context.Orders.Add(order);

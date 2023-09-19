@@ -17,5 +17,6 @@ namespace KaficiProjekat.Domain
 
         public ICollection<UserShift> UserShifts { get; set; } = new List<UserShift>();
         public ICollection<UserUseCase> UseCases { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }

@@ -22,6 +22,7 @@ namespace KaficiProjekat.DataAccess.Configurations
 
             builder.HasMany(x => x.UserShifts).WithOne(x => x.User).HasForeignKey(x => x.UserId);
             builder.HasMany(x => x.UseCases).WithOne(x => x.User).HasForeignKey(x => x.UserId);
+            builder.HasMany(x=>x.Orders).WithOne(x=> x.User).HasForeignKey(x=>x.UserId).OnDelete(Microsoft.EntityFrameworkCore.DeleteBehavior.Restrict);
 
             //builder.HasDiscriminator<string>("Uloga").HasValue<User>("User").HasValue<Owner>("Owner");
         }
