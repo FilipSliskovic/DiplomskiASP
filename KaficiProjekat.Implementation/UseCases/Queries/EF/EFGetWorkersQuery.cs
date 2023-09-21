@@ -29,6 +29,8 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
 
             var query = Context.WorkersInCafe.Where(x => x.IsActive == true).Include(x=>x.UserShift).ThenInclude(x=>x.User).Where(x => x.IsActive == true).Include(x=>x.UserShift).ThenInclude(x=>x.Shifts).Where(x => x.IsActive == true).Include(x=>x.Cafe).AsQueryable();
 
+            query = query.Where(x => x.Date >= search.DateFrom && x.Date <= search.DateTo);
+
             if (search.WorkerId > 0)
             {
 
