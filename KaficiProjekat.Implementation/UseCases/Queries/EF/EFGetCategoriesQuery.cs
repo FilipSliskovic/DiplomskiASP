@@ -49,6 +49,7 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
 
             response.Data = query.Skip(toSkip).Take(search.PerPage.Value).Select(x => new CategoryDTO
             {
+                Id = x.Id,
                 Name = x.Name
             }).ToList();
 

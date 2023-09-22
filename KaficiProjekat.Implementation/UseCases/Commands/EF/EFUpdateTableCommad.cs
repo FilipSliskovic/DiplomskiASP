@@ -43,10 +43,13 @@ namespace KaficiProjekat.Implementation.UseCases.Commands.EF
                 table.Name = request.Name;
             }
 
+            if (request.Seats > 0 )
+            {
+                table.Seats = request.Seats;
+            }
 
 
             
-            table.IsActive = request.IsActive;
 
             Context.SaveChanges();
         }
