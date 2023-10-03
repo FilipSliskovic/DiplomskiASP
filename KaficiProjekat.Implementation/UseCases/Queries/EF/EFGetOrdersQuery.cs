@@ -1,4 +1,5 @@
-﻿using KaficiProjekat.Application.UseCases.DTO;
+﻿using Humanizer;
+using KaficiProjekat.Application.UseCases.DTO;
 using KaficiProjekat.Application.UseCases.DTO.Searches;
 using KaficiProjekat.Application.UseCases.Queries;
 using KaficiProjekat.DataAccess;
@@ -68,8 +69,14 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
                 CafeName = x.Table.Cafe.Name,
                 Konobar = x.User.Name + " " + x.User.LastName,
                 DateAndTime = x.DateAndTime,
-                TableName = x.Table.Name
-                
+                TableName = x.Table.Name,
+
+
+            }).ToList()
+            .Select(dto =>
+            {
+                dto.HumanDateTime = dto.DateAndTime.Humanize();
+                return dto;
             }).ToList();
 
             response.CurrentPage = search.Page.Value;

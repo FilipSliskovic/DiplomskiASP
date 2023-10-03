@@ -13,8 +13,8 @@ namespace KaficiProjekat.Application.UseCases.DTO
         public string CafeName { get; set; }    
         public string TableName { get; set; }
         public DateTime DateAndTime { get; set; }
-        
 
+        public string HumanDateTime { get; set; }
     }
     public class CreateOrderDTO
     {
