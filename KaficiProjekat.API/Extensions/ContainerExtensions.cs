@@ -154,6 +154,7 @@ namespace KaficiProjekat.API.Extensions
             services.AddTransient<CreateProductValidator>();
             services.AddTransient<CreateTableValidator>();
             services.AddTransient<CreateReservationValidator>();
+            services.AddTransient<UpdateCategoryValidator>();
             #endregion
         }
 

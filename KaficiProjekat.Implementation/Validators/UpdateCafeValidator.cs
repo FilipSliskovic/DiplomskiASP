@@ -23,7 +23,7 @@ namespace KaficiProjekat.Implementation.Validators
             RuleFor(x => x.Name)
                 .Cascade(CascadeMode.Stop)
                 //.NotEmpty().WithMessage("Name is required.")
-                .MinimumLength(3).WithMessage("Minimum length for a shift name is 3.")
+                .MinimumLength(3).WithMessage("Minimum length for a cafe name is 3.")
                 .Must(CafeNotInUse).WithMessage("Name: {PropertyValue} is already in use");
 
             RuleFor(x => x.Description)

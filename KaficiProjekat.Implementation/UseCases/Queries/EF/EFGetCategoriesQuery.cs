@@ -50,7 +50,8 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
             response.Data = query.Skip(toSkip).Take(search.PerPage.Value).Select(x => new CategoryDTO
             {
                 Id = x.Id,
-                Name = x.Name
+                Name = x.Name,
+                ParentName = x.ParentCategory.Name
             }).ToList();
 
             response.CurrentPage = search.Page.Value;

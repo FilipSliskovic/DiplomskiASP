@@ -1,5 +1,6 @@
 ﻿using KaficiProjekat.API.DTO;
 using KaficiProjekat.Application.UseCases.Commands;
+using KaficiProjekat.Application.UseCases.DTO;
 using KaficiProjekat.Application.UseCases.DTO.Searches;
 using KaficiProjekat.Application.UseCases.Queries;
 using KaficiProjekat.Implementation;
@@ -97,9 +98,10 @@ namespace KaficiProjekat.API.Controllers
 
         // PUT api/<CategoriesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put([FromBody] UpdateCategoryDTO dto, [FromServices] IUpdateCategoryCommand command )
         {
-
+            _handler.HandleCommand(command, dto);
+            return Ok();
         }
 
         // DELETE api/<CategoriesController>/5
