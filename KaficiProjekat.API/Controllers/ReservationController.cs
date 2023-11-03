@@ -74,7 +74,7 @@ namespace KaficiProjekat.API.Controllers
         /// <response code="200">Successful query.</response>
         /// <response code="401">Unauthorized.</response>
         /// <response code="500">Unexpected server error.</response>
-        [HttpPut("{id}")]
+        [HttpPut]
         public IActionResult Put([FromBody] UpdateReservationDTO dto, [FromServices] IUpdateReservationCommand command)
         {
             _handler.HandleCommand(command,dto);

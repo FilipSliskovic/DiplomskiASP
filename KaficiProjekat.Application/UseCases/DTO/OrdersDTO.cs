@@ -14,7 +14,6 @@ namespace KaficiProjekat.Application.UseCases.DTO
         public string TableName { get; set; }
         public DateTime DateAndTime { get; set; }
 
-        public string HumanDateTime { get; set; }
     }
     public class CreateOrderDTO
     {

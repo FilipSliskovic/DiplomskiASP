@@ -72,11 +72,6 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
                 TableName = x.Table.Name,
 
 
-            }).ToList()
-            .Select(dto =>
-            {
-                dto.HumanDateTime = dto.DateAndTime.Humanize();
-                return dto;
             }).ToList();
 
             response.CurrentPage = search.Page.Value;
