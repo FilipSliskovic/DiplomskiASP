@@ -9,5 +9,7 @@ namespace KaficiProjekat.Application.UseCases.DTO.Searches
     public class CafeProductOrderSearch : BasePagedSearch
     {
         public int OrderId { get; set; }
+        public DateTime? DateFrom { get; set; }
+        public DateTime? DateTo { get; set; }
     }
 }

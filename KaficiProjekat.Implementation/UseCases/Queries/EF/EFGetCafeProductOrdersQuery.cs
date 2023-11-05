@@ -37,14 +37,28 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
                 query = query.Where(x=> x.OrderId == search.OrderId);
             }
 
+            if (search.DateFrom != null || search.DateTo != null)
+            {
+                query = query.Where(x => x.Order.DateAndTime >= search.DateFrom && x.Order.DateAndTime <= search.DateTo);
+            }
+
             if (!string.IsNullOrEmpty(search.Keyword))
             {
-                query = query.Where(x => x.CafeProduct.Product.Name.Contains(search.Keyword) || 
+                query = query.Where(x => x.CafeProduct.Product.Name.Contains(search.Keyword) ||
                 x.CafeProduct.Product.Description.Contains(search.Keyword) ||
                 x.CafeProduct.Product.Amount.Contains(search.Keyword) ||
-                x.CafeProduct.Cafe.Name.Contains(search.Keyword) || 
-                x.CafeProduct.Product.Category.Name.Contains(search.Keyword));
+                x.CafeProduct.Cafe.Name.Contains(search.Keyword) ||
+                x.CafeProduct.Product.Category.Name.Contains(search.Keyword) ||
+                x.OrderId.Equals(search.Keyword)||
+                x.Order.Table.Name.Contains(search.Keyword)||
+                x.ProductAmount.Equals(search.Keyword)
+                
+                );
+                
+                
             }
+
+
 
             if (search.PerPage == null || search.PerPage < 1)
             {
