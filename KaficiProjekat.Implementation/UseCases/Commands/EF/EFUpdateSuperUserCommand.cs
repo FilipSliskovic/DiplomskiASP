@@ -69,6 +69,23 @@ namespace KaficiProjekat.Implementation.UseCases.Commands.EF
 
             }
 
+            if (request.GiveWorker)
+            {
+
+                for (int i = 0; i < 100; i++)
+                {
+                    updateSuperUser.Add(new UserUseCase
+                    {
+                        UserId = request.UserId,
+                        UseCaseId = i
+                    });
+                }
+
+                Context.UserUseCase.AddRange(updateSuperUser);
+
+            }
+
+
             Context.SaveChanges();
 
         }

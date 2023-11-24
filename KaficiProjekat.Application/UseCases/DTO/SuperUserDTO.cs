@@ -15,5 +15,7 @@ namespace KaficiProjekat.Application.UseCases.DTO
         public int UserId { get; set; }
         public bool GiveSuperUser { get; set; }
 
+        public bool GiveWorker { get; set; }
+
     }
 }

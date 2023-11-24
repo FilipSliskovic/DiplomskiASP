@@ -24,4 +24,9 @@ namespace KaficiProjekat.Application.UseCases.DTO
         public DateTime Date { get; set; }
 
     }
+
+    public class AddWorkerDTO
+    {
+        public int UserId { get; set; }
+    }
 }

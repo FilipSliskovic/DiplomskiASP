@@ -137,6 +137,7 @@ namespace KaficiProjekat.API.Extensions
             services.AddTransient<ICreateReservationCommand, EFCreateReservationCommand>();
             services.AddTransient<IDeleteReservationCommand, EFDeleteReservationCommand>();
             services.AddTransient<IUpdateReservationCommand, EFUpdateReservationCommand>();
+            services.AddTransient<IGetCafeWorkersQuery, EFGetCafeWorkersQuery>();
 
 
             #region Validators
