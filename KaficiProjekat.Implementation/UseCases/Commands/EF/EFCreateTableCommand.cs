@@ -51,7 +51,7 @@ namespace KaficiProjekat.Implementation.UseCases.Commands.EF
             {
                 CafeId = cafe.Id,
                 Name = request.Name,
-
+                Seats = request.Seats
             };
 
             Context.Tables.Add(table);

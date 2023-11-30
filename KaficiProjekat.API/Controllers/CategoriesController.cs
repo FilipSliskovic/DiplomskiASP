@@ -62,7 +62,7 @@ namespace KaficiProjekat.API.Controllers
 
 
         [HttpPost]
-        public IActionResult Post([FromForm] CreateCategoryApiDto dto, [FromServices] ICreateCategoryCommand command)
+        public IActionResult Post([FromBody] CreateCategoryApiDto dto, [FromServices] ICreateCategoryCommand command)
         {
             if (dto.Image != null)
             {

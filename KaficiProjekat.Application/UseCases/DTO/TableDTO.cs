@@ -18,6 +18,7 @@ namespace KaficiProjekat.Application.UseCases.DTO
         public string Name { get; set; }
         public int CafeId { get; set; }
 
+        public int Seats { get; set; }
     }
 
     public class UpradeTableDTO

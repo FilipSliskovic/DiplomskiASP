@@ -59,7 +59,7 @@ namespace KaficiProjekat.Implementation.UseCases.Commands.EF
         public List<UserUseCase> GetRegisteredUserUseCases(int id)
         {
             List<UserUseCase> RegisteredUserUseCases = new List<UserUseCase>();
-            int[] UseCases = { 31, 12, 25, 28 , 38 , 40 , 15  };
+            int[] UseCases = { 31, 12, 25, 28 , 38 , 40 , 15, 41, 42 };
 
             foreach (int i in UseCases)
             {
