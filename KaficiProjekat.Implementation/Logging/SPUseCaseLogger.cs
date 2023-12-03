@@ -42,7 +42,7 @@ namespace KaficiProjekat.Implementation.Logging
                 usecasename = log.UseCaseName,
                 username = log.User,
                 userid = log.UserId,
-                excecutiontime = log.ExecutionTime,
+                excecutiontime = log.ExcecutionTime,
                 data = log.Data,
                 isauthorized = log.IsAuthorized
             },commandType: System.Data.CommandType.StoredProcedure);

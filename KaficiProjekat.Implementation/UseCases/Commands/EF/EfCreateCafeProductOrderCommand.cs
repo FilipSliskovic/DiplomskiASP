@@ -26,7 +26,7 @@ namespace KaficiProjekat.Implementation.UseCases.Commands.EF
         {
             
             var cafeProduct = Context.CafeProducts.Find(request.CafeProductId);
-            var product = Context.Products.Find(cafeProduct.ProductID);
+            var product = Context.Products.Find(cafeProduct.Id);
             var productPrice = product.Price;
             var productName = product.Name;
 
@@ -48,7 +48,7 @@ namespace KaficiProjekat.Implementation.UseCases.Commands.EF
                     OrderId = request.OrderId,
                     ProductAmount = request.ProductAmount,
                     ProductName = productName,
-                    ProductPrice = productPrice * request.ProductAmount
+                    ProductPrice = productPrice
                 };
 
                 Context.CafeProductOrder.Add(cafeproductorder);

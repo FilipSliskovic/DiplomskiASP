@@ -21,7 +21,7 @@ namespace KaficiProjekat.Implementation.Validators
             RuleFor(x => x.Name)
                 .Cascade(CascadeMode.Stop)
                 .NotEmpty().WithMessage("Name is required")
-                .Must(NameNotInUse).WithMessage("Name: {PropertyValue} is already in use");
+                .Must((x,y) => !context.Shifts.Any(s => s.Name == x.Name || s.Id != x.Id)).WithMessage("Name: {PropertyValue} is already in use");
 
 
         }

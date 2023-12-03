@@ -81,12 +81,12 @@ namespace KaficiProjekat.Implementation.UseCases.Queries.EF
                 CafeProducts = new CafeProductDTO
                 {
                     Id = x.CafeProduct.Id,
-                    ProductName = x.CafeProduct.Product.Name,
+                    ProductName = x.ProductName,
                     Amount = x.CafeProduct.Product.Amount,
                     CafeName = x.CafeProduct.Cafe.Name,
                     Description = x.CafeProduct.Product.Description,
                     Category = x.CafeProduct.Product.Category.Name,
-                    Price = x.CafeProduct.Product.Price
+                    Price = (decimal) x.ProductPrice
 
                 },
                 AmountOfProducts = x.ProductAmount,

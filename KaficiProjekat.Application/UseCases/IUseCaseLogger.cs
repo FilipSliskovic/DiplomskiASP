@@ -28,7 +28,7 @@ namespace KaficiProjekat.Application.UseCases
         public string UseCaseName { get; set; }
         public string User { get; set; }
         public int UserId { get; set; }
-        public DateTime ExecutionTime { get; set; }
+        public DateTime ExcecutionTime { get; set; }
         public string Data { get; set; }
         public bool IsAuthorized { get; set; }
 

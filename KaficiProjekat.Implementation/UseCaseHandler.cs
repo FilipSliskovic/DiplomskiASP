@@ -80,7 +80,7 @@ namespace KaficiProjekat.Implementation
             var log = new UseCaseLog
             {
                  User = _user.Identity,
-                ExecutionTime = DateTime.UtcNow,
+                ExcecutionTime = DateTime.UtcNow,
                 UseCaseName = useCase.Name,
                 UserId = _user.Id,
                 Data = JsonConvert.SerializeObject(data),

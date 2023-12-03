@@ -24,7 +24,7 @@ namespace KaficiProjekat.Implementation.Validators
                 .Cascade(CascadeMode.Stop)
                 //.NotEmpty().WithMessage("Name is required.")
                 .MinimumLength(3).WithMessage("Minimum length for a cafe name is 3.")
-                .Must(CafeNotInUse).WithMessage("Name: {PropertyValue} is already in use");
+                .Must((x, y) => !context.Cafes.Any(s => s.Name == x.Name || s.Id != x.Id)).WithMessage("Name: {PropertyValue} is already in use");
 
             RuleFor(x => x.Description)
                 .Cascade(CascadeMode.Stop)
@@ -35,7 +35,7 @@ namespace KaficiProjekat.Implementation.Validators
                 .Cascade(CascadeMode.Stop)
                 //.NotEmpty().WithMessage("Adress is required.")
                 .MinimumLength(3).WithMessage("Minimum length for adress is 3.")
-                .Must(AdressNotInUse).WithMessage("Adress: {PropertyValue} is already in use");
+                .Must((x, y) => !context.Cafes.Any(s => s.Adress == x.Adress || s.Id != x.Id)).WithMessage("Adress: {PropertyValue} is already in use");
 
             _context = context;
         }

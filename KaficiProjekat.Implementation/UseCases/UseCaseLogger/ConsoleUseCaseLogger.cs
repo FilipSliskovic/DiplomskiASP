@@ -16,7 +16,7 @@ namespace KaficiProjekat.Implementation.UseCases.UseCaseLogger
 
         public void Log(UseCaseLog log)
         {
-            Console.WriteLine($"UseCase: {log.UseCaseName}, User: {log.User}, {log.ExecutionTime}, Authorized: {log.IsAuthorized}");
+            Console.WriteLine($"UseCase: {log.UseCaseName}, User: {log.User}, {log.ExcecutionTime}, Authorized: {log.IsAuthorized}");
             Console.WriteLine($"Use Case Data: " + log.Data);
         }
     }

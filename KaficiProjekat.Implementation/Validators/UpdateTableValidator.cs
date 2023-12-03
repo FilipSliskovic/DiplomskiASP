@@ -20,7 +20,7 @@ namespace KaficiProjekat.Implementation.Validators
 
             RuleFor(x => x.Name)
                 .Cascade(CascadeMode.Stop)
-                .Must(NameNotInUse).WithMessage("Name: {PropertyValue} is already in use");
+                .Must((x , y)=> !_context.Tables.Any(t => t.Name == x.Name && t.Id != x.Id)).WithMessage("Name: {PropertyValue} is already in use");
 
             
         }

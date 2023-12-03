@@ -22,7 +22,7 @@ namespace KaficiProjekat.Implementation.Validators
                .Cascade(CascadeMode.Stop)
                //.NotEmpty().WithMessage("Name is required.")
                .MinimumLength(3).WithMessage("Minimum length for a category name is 3.")
-               .Must(CatNotInUse).WithMessage("Name: {PropertyValue} is already in use");
+               .Must((x, y) => !context.Categories.Any(s => s.Name == x.Name || s.Id != x.Id)).WithMessage("Name: {PropertyValue} is already in use");
 
         }
 
