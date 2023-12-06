@@ -72,23 +72,24 @@ namespace KaficiProjekat.API.Controllers
             if (dto.Image != null)
             {
 
-                var guid = Guid.NewGuid();
+                
+                    var guid = Guid.NewGuid();
                 var extension = Path.GetExtension(dto.Image.FileName);
 
-                if (SupportedExtension.Contains(extension))
-                {
-                    throw new InvalidOperationException("Invalid file extension");
-                }
+                if (!SupportedExtension.Contains(extension))
+                    {
+                        throw new InvalidOperationException("Invalid file extension");
+                    }
 
-                var newFileName = guid + extension;
+                    var newFileName = guid + extension;
 
-                var path = Path.Combine("wwwroot", "images", newFileName);
+                    var path = Path.Combine("wwwroot", "images", newFileName);
 
 
-                using (var filestream = new FileStream(path, FileMode.Create))
-                {
+                    using (var filestream = new FileStream(path, FileMode.Create))
+                    {
                     dto.Image.CopyTo(filestream);
-                }
+                    }
 
 
                 dto.ImageFileName = newFileName;
@@ -102,10 +103,10 @@ namespace KaficiProjekat.API.Controllers
         private IEnumerable<string> SupportedExtension => new List<string> { ".Png", ".jpg", ".jpeg" };
 
         // PUT api/<ProductsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
         // DELETE api/<ProductsController>/5
 

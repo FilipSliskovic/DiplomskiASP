@@ -44,11 +44,11 @@ namespace KaficiProjekat.Implementation.UseCases.Commands.EF
             };
 
             if (!string.IsNullOrEmpty(request.ImageFileName))
-            {
-                var image = new Image
                 {
+                var image = new Image
+                    {
                     Path = request.ImageFileName
-                };
+                    };
                 product.Images.Add(image);
             }
 
